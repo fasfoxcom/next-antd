@@ -1,34 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This repo reproduces an issue with Next.js on Ubuntu/Debian machines.
 
-## Getting Started
+Run:
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
+```
+yarn install && yarn run build && yarn run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+And visit [http://localhost:3000/](http://localhost:3000/) to reproduce:
+```
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+TypeError: Cannot read property 'vertical' of undefined
+    at Object.children (/pnpm-next-antd/node_modules/antd/lib/form/FormItemLabel.js:84:26)
+    at a.b.render (/pnpm-next-antd/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:44:213)
+    at a.b.read (/pnpm-next-antd/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:41:83)
+    at Object.exports.renderToString (/pnpm-next-antd/node_modules/react-dom/cjs/react-dom-server.node.production.min.js:52:138)
+    at Object.renderPage (/pnpm-next-antd/node_modules/next/dist/server/render.js:756:46)
+    at Object.defaultGetInitialProps (/pnpm-next-antd/node_modules/next/dist/server/render.js:369:51)
+    at Function.getInitialProps (/pnpm-next-antd/.next/server/chunks/105.js:422:20)
+    at Object.<anonymous> (/pnpm-next-antd/node_modules/next/dist/shared/lib/utils.js:103:33)
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (/pnpm-next-antd/node_modules/next/dist/shared/lib/utils.js:15:28)
+```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+There should be no error if built/ran on macOS.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+(This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app)).
